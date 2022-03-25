@@ -1,18 +1,19 @@
 body{
     height:100vh;
     width:100vw;
+    margin:0px;
 }
 
 #grid{
     display:grid;
     height:100%;
     width:100%;
-    grid-template-columns: auto auto;
 }
 
 .cell{
-    width:100%;
-    height:25%;
-    box-sizing: border-box ;
-    border-style: solid;
+    width:6.25%;
+    height:6.25%;
+    box-sizing:border-box;
+    /* border: 2px solid black; */
+    background-color:red;
 }

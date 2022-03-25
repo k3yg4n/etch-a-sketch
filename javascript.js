@@ -1,17 +1,24 @@
+function makeSquareGrid(numRows){
+    // Generate the 16x16 grid
+    cellWidth = 100.0/numRows;
+
+    for(let i = 1; i <= numRows; i++){
+    gridContainer.style.gridTemplateColumns += `${cellWidth}%`;
+    gridContainer.style.gridTemplateRows += `${cellWidth}%`;
+    }
+
+    // Append a div to each cell of the grid
+    for(let i = 1; i <= numRows*numRows; i++){
+        var cell = document.createElement("div");
+        cell.textContent = i;
+        //cell.classList.add("cell");
+        gridContainer.appendChild(cell);
+    }
+}
 
 
 //// MAIN ////
-const gridyContainer = document.querySelector('#gridy');
-gridyContainer.style.height = "100%";
-gridyContainer.style.width = "100%";
+const gridContainer = document.querySelector('#grid');
+makeSquareGrid(16);
 
-for(let i = 1; i <= 16; i++){
-    var cell = document.createElement("div");
-    
-    cell.textContent =`cell ${i}`;
-    cell.style.height = "50%";
-    cell.style.width = "50%";
-    
-    //cell.classList.add("cell");
-    gridyContainer.appendChild(cell);
-}
+
