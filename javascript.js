@@ -1,7 +1,11 @@
 function makeSquareGrid(numRows){
-    // Generate the 16x16 grid
     cellWidth = 100.0/numRows;
 
+    // Reset the number of rows and columns
+    gridContainer.style.gridTemplateColumns = "";
+    gridContainer.style.gridTemplateRows ="";
+
+    // Generate the 16x16 grid
     for(let i = 1; i <= numRows; i++){
     gridContainer.style.gridTemplateColumns += `${cellWidth}%`;
     gridContainer.style.gridTemplateRows += `${cellWidth}%`;
@@ -28,6 +32,21 @@ function clearGrid(e){
     cells.forEach(function(cell){
         cell.classList.remove("coloredCell")
     });
+
+    deleteCells(cells);
+
+    do{
+        numRows = window.prompt("Grid has been cleared. Please enter the desired number of rows in the new grid (between 1 and 100 inclusive):");
+    } while(numRows > 100 || numRows <= 0);
+
+
+    makeSquareGrid(numRows);
+}
+
+function deleteCells(cells){
+    cells.forEach(function(cell){
+        gridContainer.removeChild(cell);   
+    });
 }
 
 
@@ -37,6 +56,8 @@ const gridContainer = document.querySelector('#grid');
 
 clearButton.addEventListener('click',clearGrid);
 
-makeSquareGrid(16);
+let numRows = 16;
+
+makeSquareGrid(numRows);
 
 
