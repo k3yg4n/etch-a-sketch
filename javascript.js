@@ -16,6 +16,7 @@ function makeSquareGrid(numRows){
         let cell = document.createElement("div");
         cell.textContent = i;
         cell.classList.add("cell");
+        
         cell.addEventListener('mouseover',colorCell);
 
         gridContainer.appendChild(cell);
@@ -23,22 +24,36 @@ function makeSquareGrid(numRows){
 }
 
 function colorCell(e){
-    e.target.classList.add('coloredCell');
+    if(isRainbow === true){
+        randomizeColor();
+    }
+    e.target.style.background = currentColor;
 }
 
-function clearGrid(e){
+function randomizeColor(){
+    // Updates currentColor variable to random value.
+    let letters = '0123456789ABCDEF';
+    currentColor = '#';
+    for(let i=0; i<6; i++){
+        currentColor += letters[Math.floor(Math.random() * 16)];
+    }
+}
+
+function clearGrid(){
     let cells = document.querySelectorAll(".cell");
-
+    
     cells.forEach(function(cell){
-        cell.classList.remove("coloredCell")
+        cell.style.background = "";
     });
+}
 
+function newGrid(){
+    let cells = document.querySelectorAll(".cell");
     deleteCells(cells);
 
     do{
         numRows = window.prompt("Grid has been cleared. Please enter the desired number of rows in the new grid (between 1 and 100 inclusive):");
     } while(numRows > 100 || numRows <= 0);
-
 
     makeSquareGrid(numRows);
 }
@@ -52,9 +67,35 @@ function deleteCells(cells){
 
 //// MAIN ////
 const clearButton = document.querySelector('#clearBtn');
+const newButton = document.querySelector('#newBtn');
+const rainbowButton = document.querySelector('#rainbowBtn')
+const gradientButton = document.querySelector('#gradientBtn')
+const normalButton = document.querySelector('#normalBtn')
 const gridContainer = document.querySelector('#grid');
 
+let isRainbow = false;
+let isGradient = false;
+const startingColor = `rgb(144, 189, 248)`
+let currentColor = startingColor;
+
 clearButton.addEventListener('click',clearGrid);
+
+newButton.addEventListener('click',newGrid);
+
+normalButton.addEventListener('click', function(){
+    isRainbow = false;
+    isGradient = false;
+    currentColor = startingColor;
+})
+
+rainbowButton.addEventListener('click', function(){
+    isRainbow = true;
+});
+
+gradientButton.addEventListener('click',function(){
+     isGradient = true;
+});
+
 
 let numRows = 16;
 
