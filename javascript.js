@@ -26,6 +26,9 @@ function makeSquareGrid(numRows){
 function colorCell(e){
     if(isRainbow === true){
         randomizeColor();
+    } if (isGradient == true && currentOpacity < 1){
+        e.target.style.opacity = currentOpacity;
+        currentOpacity = String(Number(currentOpacity) +0.1)
     }
     e.target.style.background = currentColor;
 }
@@ -34,7 +37,7 @@ function randomizeColor(){
     // Updates currentColor variable to random value.
     let letters = '0123456789ABCDEF';
     currentColor = '#';
-    for(let i=0; i<6; i++){
+    for(let i=0; i < 6; i++){
         currentColor += letters[Math.floor(Math.random() * 16)];
     }
 }
@@ -76,6 +79,7 @@ const gridContainer = document.querySelector('#grid');
 let isRainbow = false;
 let isGradient = false;
 const startingColor = `rgb(144, 189, 248)`
+let currentOpacity = '';
 let currentColor = startingColor;
 
 clearButton.addEventListener('click',clearGrid);
@@ -94,6 +98,7 @@ rainbowButton.addEventListener('click', function(){
 
 gradientButton.addEventListener('click',function(){
      isGradient = true;
+     currentOpacity = '0.1';
 });
 
 
