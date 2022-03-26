@@ -67,6 +67,27 @@ function deleteCells(cells){
     });
 }
 
+function changeColor(e){
+    let currColorBtn = e.target.id;
+    if(currColorBtn === 'redBtn'){
+        currentColor = "red";
+    } else if(currColorBtn === 'orangeBtn'){
+        currentColor = "orange";
+    } else if(currColorBtn === 'yellowBtn'){
+        currentColor = "yellow";
+    } else if(currColorBtn === 'greenBtn'){
+        currentColor = "green";
+    } else if(currColorBtn === 'blueBtn'){
+        currentColor = "blue";
+    } else if(currColorBtn === 'violetBtn'){
+        currentColor = "violet";
+    } else if(currColorBtn === 'blackBtn'){
+        currentColor =  "black";
+    } else if(currColorBtn === 'eraserBtn'){
+        currentColor = "white";
+    }
+}
+
 
 //// MAIN ////
 const clearButton = document.querySelector('#clearBtn');
@@ -74,7 +95,9 @@ const newButton = document.querySelector('#newBtn');
 const rainbowButton = document.querySelector('#rainbowBtn')
 const gradientButton = document.querySelector('#gradientBtn')
 const normalButton = document.querySelector('#normalBtn')
+const colorButtons = document.querySelectorAll(".colorBtn")
 const gridContainer = document.querySelector('#grid');
+
 
 let isRainbow = false;
 let isGradient = false;
@@ -86,11 +109,15 @@ clearButton.addEventListener('click',clearGrid);
 
 newButton.addEventListener('click',newGrid);
 
+colorButtons.forEach(function(btn){
+    btn.addEventListener('click',changeColor);
+})
+
 normalButton.addEventListener('click', function(){
     isRainbow = false;
     isGradient = false;
     currentColor = startingColor;
-})
+});
 
 rainbowButton.addEventListener('click', function(){
     isRainbow = true;
