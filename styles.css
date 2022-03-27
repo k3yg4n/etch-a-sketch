@@ -1,8 +1,69 @@
 #pageHeader{
     width:100vw;
     display:flex;
-    justify-content:space-around;
+    flex-direction:column;
+    align-items:center;
+    margin-bottom:10px;
 }
+
+#pageHeader h1{
+    font-size:50px;
+    margin:10px 0px;
+}
+
+#pageHeader h2{
+    font-size:20px;
+    margin: 10px 0px;
+}
+
+#selections{
+    width:100%;
+    display:flex;
+    justify-content:space-around;
+    margin: 10px 0px;
+}
+
+
+
+#optionSelection{
+    width:33%;
+    text-align:center;
+}
+
+#colorSelection{
+    width:33%;
+    text-align:center;
+}
+
+#modeSelection{
+    width:33%;
+    text-align:center
+}
+
+#optionSelection button,
+#modeSelection button{
+    align-items: center;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.85);
+    cursor: pointer;
+    display: inline-flex;
+    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1.25;
+    margin: 0;
+    min-height: 3rem;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    position: relative;
+
+    width: auto;
+}
+
 
 body{
     height:100vh;
@@ -16,8 +77,8 @@ body{
 #grid{
     box-sizing:border-box;
     display:grid;
-    height:90%;
-    width:100%;
+    width:1000px;
+    height:1000px;
     border: 5px solid black;
 }
 
@@ -43,8 +104,8 @@ body{
 
 
 .colorBtn{
-    width:50px;
-    height:50px;
+    width:25px;
+    height:25px;
 }
 
 #eraserBtn{

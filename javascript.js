@@ -14,7 +14,7 @@ function makeSquareGrid(numRows){
     // Append a div to each cell of the grid
     for(let i = 1; i <= numRows*numRows; i++){
         let cell = document.createElement("div");
-        cell.textContent = i;
+        //cell.textContent = i;
         cell.classList.add("cell");
         
         cell.addEventListener('mouseover',colorCell);
