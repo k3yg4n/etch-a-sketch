@@ -25,10 +25,13 @@ function makeSquareGrid(numRows){
 
 function colorCell(e){
     if(isRainbow === true){
+        e.target.style.opacity = 1;
         randomizeColor();
     } if (isGradient == true && currentOpacity < 1){
         e.target.style.opacity = currentOpacity;
         currentOpacity = String(Number(currentOpacity) +0.1)
+    } else {
+        e.target.style.opacity = 1;
     }
     e.target.style.background = currentColor;
 }
@@ -47,6 +50,8 @@ function clearGrid(){
     
     cells.forEach(function(cell){
         cell.style.background = "";
+        cell.style.opacity = 1;
+        currentOpacity = 1;
     });
 }
 
@@ -68,6 +73,7 @@ function deleteCells(cells){
 }
 
 function changeColor(e){
+    isRainbow = false;
     let currColorBtn = e.target.id;
     if(currColorBtn === 'redBtn'){
         currentColor = "red";
@@ -116,7 +122,6 @@ colorButtons.forEach(function(btn){
 normalButton.addEventListener('click', function(){
     isRainbow = false;
     isGradient = false;
-    currentColor = startingColor;
 });
 
 rainbowButton.addEventListener('click', function(){
